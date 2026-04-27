@@ -1,0 +1,45 @@
+---
+import { media } from "../data/profile";
+---
+<section id="media" class="bg-apple-white">
+  <div class="mx-auto w-full max-w-6xl px-6 py-14 md:py-20">
+    <div class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-wider text-flame-500">Brand</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold text-apple-ink mt-1">Aerospace, explained.</h2>
+      </div>
+      <p class="max-w-md text-sm text-apple-ink-2">
+        Short explainers on the physics, the systems and the stories behind flight — on TikTok, LinkedIn and YouTube.
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      {media.map((m) => (
+        <a href={m.href} target="_blank" rel="noopener noreferrer" aria-label={`${m.title} — ${m.kind === "video" ? "Watch" : "Read"} on ${m.platform}`}
+           class="group relative flex flex-col overflow-hidden rounded-2xl border border-apple-border bg-white apple-card-shadow transition hover:-translate-y-0.5 hover:border-apple-border-mid">
+          <div class="relative aspect-video overflow-hidden bg-[#e8e8ed]">
+            <img src={m.cover} alt=""
+                 loading="lazy" decoding="async"
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                 onerror="this.style.display='none'" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+            <span class="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-md bg-black/60 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-white backdrop-blur">
+              {m.platform}
+            </span>
+            {m.kind === "video" && (
+              <span class="absolute inset-0 flex items-center justify-center">
+                <span class="flex size-14 items-center justify-center rounded-full bg-flame-500 text-white shadow-xl transition group-hover:scale-110">
+                  <svg viewBox="0 0 24 24" fill="currentColor" class="size-6 translate-x-0.5" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </span>
+            )}
+          </div>
+          <div class="p-4">
+            <p class="font-display text-sm font-semibold text-apple-ink leading-snug">{m.title}</p>
+            <p class="mt-1 font-mono text-xs text-apple-ink-2 group-hover:text-flame-500 transition">{m.kind === "video" ? "Watch" : "Read"} on {m.platform} →</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

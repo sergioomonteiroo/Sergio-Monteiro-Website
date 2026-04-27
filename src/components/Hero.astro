@@ -1,0 +1,120 @@
+---
+import { profile, education } from "../data/profile";
+const featuredEducation = education.filter((e) => e.featured);
+---
+<section id="home" class="relative w-full overflow-hidden bg-apple-gray">
+
+  <div class="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-10 px-6 pt-20 md:pt-28 pb-6 md:grid-cols-[1.15fr_1fr] md:gap-16">
+    <!-- Left: copy -->
+    <div>
+      <span class="inline-flex items-center gap-2 rounded-full border border-flame-500/30 bg-flame-500/8 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-flame-600">
+        <span class="inline-block size-1.5 rounded-full bg-flame-500 animate-pulse"></span>
+        {profile.currentPosition.company}
+      </span>
+
+      <h1 class="mt-6 font-display font-semibold text-apple-ink leading-[1.04]" style="font-size: clamp(3rem, 8vw, 5.5rem); letter-spacing: -0.03em;">
+        {profile.name}
+      </h1>
+
+      <p class="mt-3 font-display font-medium text-apple-ink-2" style="font-size: clamp(1.1rem, 2.5vw, 1.5rem); letter-spacing: -0.01em;">
+        {profile.brandLine}
+      </p>
+
+      <p class="mt-5 max-w-xl text-base text-apple-ink-2 leading-relaxed">
+        {profile.pitch}
+      </p>
+
+      <p class="mt-4 font-mono text-sm">
+        <span class="text-flame-500">{profile.role}</span>
+        <span class="text-apple-ink-3"> · </span>
+        <span class="text-apple-ink-2">{profile.subtitle}</span>
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#media" class="inline-flex items-center gap-2 rounded-full bg-flame-500 px-5 py-2.5 font-display text-sm font-medium text-white hover:bg-flame-600 transition">
+          Watch my videos
+          <svg viewBox="0 0 24 24" fill="currentColor" class="size-4" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </a>
+        <a href="/cv.pdf" class="inline-flex items-center gap-2 rounded-full border border-apple-border-mid bg-white px-5 py-2.5 font-display text-sm font-medium text-apple-ink hover:bg-apple-gray transition apple-card-shadow">
+          Download CV
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+
+      <!-- Memberships -->
+      <div class="mt-10">
+        <p class="font-mono text-[11px] uppercase tracking-wider text-apple-ink-3 mb-3">Member of</p>
+        <div class="flex flex-wrap gap-1">
+          {profile.memberships.map((m) => (
+            <span
+              title={m.full}
+              aria-label={m.short}
+              tabindex="0"
+              class="cursor-help inline-flex items-center justify-center rounded-lg px-3 py-2 transition hover:bg-black/5 focus-visible:bg-black/5"
+            >
+              <img
+                src={m.logo}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                class="h-10 sm:h-9 w-auto object-contain opacity-60 hover:opacity-90 transition"
+                onerror="this.style.display='none'"
+              />
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: portrait -->
+    <div class="relative mx-auto w-full max-w-md md:mx-0">
+      <div class="relative aspect-[4/5] overflow-hidden rounded-2xl border border-apple-border bg-[#e8e8ed] apple-card-shadow">
+        <img
+          src={profile.headshot}
+          alt={`Portrait of ${profile.name}`}
+          width="480"
+          height="600"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="h-full w-full object-cover object-center"
+          onerror="this.style.display='none';"
+        />
+      </div>
+      <!-- Currently badge -->
+      <div class="absolute -bottom-4 left-4 right-4 rounded-xl bg-white apple-card-shadow px-4 py-3">
+        <p class="font-mono text-[10px] uppercase tracking-wider text-flame-500">Currently</p>
+        <p class="font-display text-sm font-semibold text-apple-ink leading-tight">{profile.currentPosition.title}</p>
+        <p class="font-mono text-xs text-apple-ink-2">{profile.currentPosition.company}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Credential cards -->
+  <div class="mx-auto w-full max-w-6xl px-6 mt-10 pb-12 md:pb-16">
+    <p class="font-mono text-[11px] uppercase tracking-wider text-apple-ink-3 mb-4">Credentials</p>
+    <div class="grid gap-4 md:grid-cols-2">
+      {featuredEducation.map((e) => (
+        <article class="relative overflow-hidden rounded-xl border border-apple-border bg-white p-5 apple-card-shadow transition hover:-translate-y-0.5 hover:border-apple-border-mid">
+          <span class="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-wider text-apple-ink-3">
+            🇺🇸 USA
+          </span>
+          <div class="flex items-start gap-4 pr-16">
+            <div class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-flame-500/10 border border-flame-500/20 text-flame-500">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="size-4" aria-hidden="true">
+                <path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3Zm0 13-7-3.82V14.5l7 3.82 7-3.82v-1.32L12 16Z"/>
+              </svg>
+            </div>
+            <div class="min-w-0">
+              <p class="font-mono text-xs text-apple-ink-3">{e.years}</p>
+              <h3 class="mt-0.5 font-display text-base font-semibold text-apple-ink leading-snug">{e.title}</h3>
+              <p class="mt-1 font-mono text-xs text-apple-ink-2">{e.school}</p>
+              <p class="font-mono text-[11px] text-apple-ink-3">{e.location}</p>
+              {e.gpa && <p class="mt-2 inline-block rounded-md bg-flame-500/8 border border-flame-500/20 px-2 py-0.5 font-mono text-[11px] text-flame-600">GPA {e.gpa}</p>}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

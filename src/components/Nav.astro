@@ -1,0 +1,160 @@
+---
+import { profile, socials } from "../data/profile";
+import Icon from "./Icon.astro";
+const items = [
+  { href: "#media", label: "Media" },
+  { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+];
+const social4 = socials.filter((s) => ["linkedin", "tiktok", "instagram", "youtube"].includes(s.icon));
+---
+<nav id="site-nav" class="fixed top-0 left-0 right-0 z-40 apple-glass">
+  <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-6 py-2 md:py-3">
+    <a href="#home" class="flex items-center gap-3 group shrink-0" aria-label={`${profile.name} — home`}>
+      <img
+        src="/images/logo5.png"
+        alt=""
+        class="h-8 sm:h-9 md:h-11 w-auto object-contain"
+        onerror="this.onerror=null;this.src='/images/logo7.svg';"
+      />
+      <span class="hidden sm:inline text-sm md:text-base font-mono font-semibold tracking-tight text-apple-ink group-hover:text-flame-500 transition">
+        {profile.name}
+      </span>
+      <span class="sm:hidden text-sm font-mono font-semibold leading-[1] tracking-tight text-apple-ink group-hover:text-flame-500 transition">
+        {profile.name.split(" ").slice(0, 1).join(" ")}<br />{profile.name.split(" ").slice(1).join(" ")}
+      </span>
+    </a>
+
+    <ul id="nav-links" class="hidden md:flex items-center gap-1 text-[12px] font-display font-normal">
+      {items.map((i) => (
+        <li>
+          <a href={i.href} data-nav-link data-target={i.href.slice(1)}
+             class="relative inline-flex items-center rounded-md px-3 py-2 text-apple-ink-2 hover:text-apple-ink transition">
+            <span>{i.label}</span>
+            <span data-nav-indicator class="pointer-events-none absolute inset-x-3 -bottom-0.5 h-0.5 origin-center scale-x-0 rounded-full bg-flame-500 transition-transform duration-300"></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="flex items-center gap-2 shrink-0">
+      <div class="flex items-center gap-1">
+        {social4.map((s) => (
+          <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+             class="inline-flex size-9 sm:size-10 items-center justify-center rounded-md border border-black/10 text-apple-ink-2 hover:text-flame-500 hover:border-flame-500/30 hover:bg-black/5 transition">
+            <Icon name={s.icon} class="size-4" />
+          </a>
+        ))}
+      </div>
+
+      <a id="nav-cta" href={`mailto:${profile.email}`}
+         class="hidden sm:inline-flex items-center gap-2 rounded-full bg-flame-500 px-4 py-1.5 text-xs font-display font-medium text-white hover:bg-flame-600 transition">
+        Get in touch
+      </a>
+
+      <button id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel"
+              class="md:hidden inline-flex size-11 items-center justify-center rounded-md border border-black/10 text-apple-ink-2 hover:text-apple-ink transition">
+        <svg id="nav-toggle-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="size-5" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="nav-toggle-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden size-5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div id="nav-panel" role="dialog" aria-modal="false" aria-label="Main menu" class="hidden md:hidden bg-apple-gray/95 backdrop-blur border-t border-black/8">
+    <ul class="mx-auto flex w-full max-w-6xl flex-col gap-1 px-6 py-4 font-display text-sm font-normal">
+      {items.map((i) => (
+        <li>
+          <a href={i.href} data-nav-link data-target={i.href.slice(1)}
+             class="flex items-center justify-between rounded-md px-3 py-3 text-apple-ink-2 hover:bg-black/5 hover:text-apple-ink transition"
+             data-nav-close>
+            <span>{i.label}</span>
+            <span aria-hidden="true" class="font-mono text-xs text-apple-ink-3">→</span>
+          </a>
+        </li>
+      ))}
+      <li class="mt-2">
+        <a href={`mailto:${profile.email}`}
+           class="block rounded-full bg-flame-500 px-3 py-3 text-center font-display font-medium text-white hover:bg-flame-600 transition"
+           data-nav-close>Get in touch</a>
+      </li>
+      <li class="mt-3 pt-3 border-t border-black/8">
+        <div class="flex flex-wrap gap-2 px-3">
+          {social4.map((s) => (
+            <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+               class="flex size-11 items-center justify-center rounded-md border border-black/10 text-apple-ink-2 hover:text-flame-500 hover:border-flame-500/30 transition"
+               data-nav-close>
+              <Icon name={s.icon} class="size-5" />
+            </a>
+          ))}
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<style is:global>
+  /* Apple light translucent nav */
+  .apple-glass {
+    background-color: rgba(245, 245, 247, 0.85);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  /* Active section indicator */
+  #nav-links a[data-active="true"] { color: #1d1d1f; }
+  #nav-links a[data-active="true"] [data-nav-indicator] { transform: scaleX(1); background-color: #0071e3; }
+</style>
+
+<script is:inline>
+  (function () {
+    const nav = document.getElementById('site-nav');
+    if (!nav) return;
+
+    const toggle = document.getElementById('nav-toggle');
+    const panel = document.getElementById('nav-panel');
+    const openIcon = document.getElementById('nav-toggle-open');
+    const closeIcon = document.getElementById('nav-toggle-close');
+    const setOpen = (open) => {
+      panel.classList.toggle('hidden', !open);
+      openIcon.classList.toggle('hidden', open);
+      closeIcon.classList.toggle('hidden', !open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle?.addEventListener('click', () => setOpen(panel.classList.contains('hidden')));
+    document.querySelectorAll('[data-nav-close]').forEach((el) =>
+      el.addEventListener('click', () => setOpen(false))
+    );
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.classList.contains('hidden')) {
+        setOpen(false);
+        toggle?.focus();
+      }
+    });
+
+    const navLinks = Array.from(document.querySelectorAll('[data-nav-link]'));
+    const sections = navLinks
+      .map((a) => ({ link: a, el: document.getElementById(a.dataset.target) }))
+      .filter((s) => s.el);
+
+    if ('IntersectionObserver' in window && sections.length) {
+      const activate = (id) => {
+        navLinks.forEach((a) => {
+          a.dataset.active = a.dataset.target === id ? 'true' : 'false';
+        });
+      };
+      const io = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible) activate(visible.target.id);
+        },
+        { rootMargin: '-40% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+      );
+      sections.forEach((s) => io.observe(s.el));
+    }
+  })();
+</script>

@@ -1,0 +1,61 @@
+---
+import { education } from "../data/profile";
+const featured = education.filter((e) => e.featured);
+const rest = education.filter((e) => !e.featured);
+---
+<section id="education" class="mx-auto w-full max-w-6xl px-6 py-14 md:py-20">
+  <p class="font-mono text-xs uppercase tracking-wider text-flame-500">Education</p>
+  <h2 class="mt-1 font-display text-4xl sm:text-5xl font-semibold text-apple-ink">Where I trained</h2>
+
+  <div class="mt-10 space-y-8">
+    {featured.map((e) => (
+      <article class="grid grid-cols-1 gap-6 md:grid-cols-[220px_1fr] md:items-start">
+        <div class="overflow-hidden rounded-xl bg-[#e8e8ed]">
+          <img src={e.image} alt="" loading="lazy" decoding="async" class="h-48 w-full object-cover md:h-auto md:aspect-[3/4]"
+               onerror="this.style.display='none'" />
+        </div>
+        <div>
+          <p class="font-mono text-xs text-flame-500">{e.years}</p>
+          <h3 class="mt-1 font-display text-2xl font-semibold text-apple-ink">{e.title}</h3>
+          {e.gpa && <p class="font-mono text-sm text-flame-500 mt-0.5">GPA {e.gpa}</p>}
+          {e.concentration && <p class="text-sm text-apple-ink-2 mt-1">Concentration: {e.concentration}</p>}
+          <p class="mt-2 font-mono text-sm text-apple-ink-2">
+            {e.schoolUrl ? (
+              <a href={e.schoolUrl} target="_blank" rel="noopener noreferrer" class="underline decoration-flame-500/40 hover:text-flame-500 transition">{e.school}</a>
+            ) : e.school}
+            <span class="text-apple-ink-3"> · {e.location}</span>
+          </p>
+          <ul class="mt-3 space-y-1.5">
+            {e.bullets.map((b) => (
+              <li class="flex items-start gap-2 text-sm text-apple-ink-2 leading-snug">
+                <span class="mt-1.5 inline-block size-1 shrink-0 rounded-full bg-flame-500"></span>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  {rest.length > 0 && (
+    <div class="mt-10 border-t border-apple-border pt-6">
+      <p class="font-mono text-xs uppercase tracking-wider text-apple-ink-3 mb-4">Earlier education</p>
+      <div class="grid gap-4 md:grid-cols-2">
+        {rest.map((e) => (
+          <div class="flex items-start gap-4 rounded-xl border border-apple-border bg-white p-4 apple-card-shadow">
+            <div class="size-14 shrink-0 overflow-hidden rounded-lg bg-[#e8e8ed]">
+              <img src={e.image} alt="" loading="lazy" decoding="async" class="h-full w-full object-cover" onerror="this.style.display='none'" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-mono text-[11px] text-flame-500">{e.years}</p>
+              <p class="font-display text-sm font-semibold text-apple-ink leading-snug">{e.title}</p>
+              <p class="font-mono text-xs text-apple-ink-2">{e.school} · {e.location}</p>
+              {e.gpa && <p class="font-mono text-[11px] text-apple-ink-3 mt-0.5">GPA {e.gpa}</p>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</section>

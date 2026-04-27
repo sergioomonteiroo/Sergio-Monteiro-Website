@@ -1,0 +1,55 @@
+---
+import { awardsFeatured, awardsRest, honors } from "../data/profile";
+---
+<section id="awards" class="mx-auto w-full max-w-6xl px-6 py-14 md:py-20">
+  <p class="font-mono text-xs uppercase tracking-wider text-flame-500">Recognition</p>
+  <h2 class="mt-1 font-display text-4xl sm:text-5xl font-semibold text-apple-ink">Honors &amp; leadership</h2>
+
+  <!-- Featured top 3 -->
+  <div class="mt-8 grid gap-4 md:grid-cols-3">
+    {awardsFeatured.map((a) => (
+      <div class="relative overflow-hidden rounded-2xl border border-apple-border bg-white p-5 apple-card-shadow transition hover:-translate-y-0.5 hover:border-apple-border-mid">
+        <div class="flex items-start justify-between">
+          <div class="flex size-10 items-center justify-center rounded-xl bg-flame-500/10 border border-flame-500/20 text-flame-500">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="size-5" aria-hidden="true"><path d="m12 2 2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1L12 2Z"/></svg>
+          </div>
+          <span class="font-mono text-xs text-flame-500">{a.year}</span>
+        </div>
+        <p class="mt-4 font-display text-base font-semibold text-apple-ink leading-snug">{a.title}</p>
+        <p class="mt-1 font-mono text-xs text-apple-ink-2">{a.issuer}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-10 grid gap-10 md:grid-cols-2">
+    <div>
+      <h3 class="font-mono text-xs uppercase tracking-wider text-apple-ink-3 mb-3">More awards &amp; scholarships</h3>
+      <ul class="space-y-2">
+        {awardsRest.map((a) => (
+          <li class="flex items-start justify-between gap-4 rounded-xl border border-apple-border bg-white px-4 py-3 apple-card-shadow transition hover:border-apple-border-mid">
+            <div class="min-w-0">
+              <p class="font-display text-sm font-semibold text-apple-ink leading-snug">{a.title}</p>
+              <p class="font-mono text-xs text-apple-ink-3 mt-0.5">{a.issuer}</p>
+            </div>
+            <span class="font-mono text-xs text-flame-500 whitespace-nowrap">{a.year}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="font-mono text-xs uppercase tracking-wider text-apple-ink-3 mb-3">Honors &amp; leadership</h3>
+      <ul class="space-y-2">
+        {honors.map((h) => (
+          <li class="flex items-start justify-between gap-4 rounded-xl border border-apple-border bg-white px-4 py-3 apple-card-shadow transition hover:border-apple-border-mid">
+            <div class="min-w-0">
+              <p class="font-display text-sm font-semibold text-apple-ink leading-snug">{h.title}</p>
+              <p class="font-mono text-xs text-apple-ink-3 mt-0.5">{h.org}</p>
+            </div>
+            <span class="font-mono text-xs text-flame-500 whitespace-nowrap">{h.year}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

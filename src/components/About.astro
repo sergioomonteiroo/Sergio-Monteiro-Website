@@ -1,0 +1,63 @@
+---
+import { profile } from "../data/profile";
+---
+<section id="about" class="mx-auto w-full max-w-6xl px-6 py-8 md:py-12">
+  <div class="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.3fr] md:items-center">
+    <!-- Portrait with asymmetric frame -->
+    <div class="relative order-2 md:order-1">
+      <div class="absolute -top-4 -left-4 h-24 w-24 border-t-2 border-l-2 border-flame-500/60"></div>
+      <div class="absolute -bottom-4 -right-4 h-24 w-24 border-b-2 border-r-2 border-flame-500/60"></div>
+      <div class="relative aspect-[3/4] overflow-hidden rounded-2xl border border-apple-border bg-[#e8e8ed]">
+        <img src="/images/eurofighter.png" alt="Eurofighter" loading="lazy" decoding="async" class="h-full w-full object-cover object-center"
+             onerror="this.style.display='none';" />
+      </div>
+    </div>
+
+    <div class="order-1 md:order-2">
+      <p class="font-mono text-xs uppercase tracking-wider text-flame-500">About</p>
+      <h2 class="mt-1 font-display text-4xl sm:text-5xl font-semibold text-apple-ink">
+        {profile.tagline}
+      </h2>
+      <ul class="mt-6 space-y-3 max-w-xl">
+        <li class="flex items-start gap-3 text-sm text-apple-ink-2 leading-snug">
+          <span class="mt-1.5 inline-block size-1.5 shrink-0 rounded-full bg-flame-500"></span>
+          <span>
+            <span class="font-semibold text-apple-ink">Avionics Systems Engineer</span> working on{" "}
+            <span class="font-semibold text-apple-ink">Eurofighter AJT</span> at{" "}
+            <span class="font-semibold text-apple-ink">Airbus Defence &amp; Space</span> (Madrid, Spain).
+          </span>
+        </li>
+        <li class="flex items-start gap-3 text-sm text-apple-ink-2 leading-snug">
+          <span class="mt-1.5 inline-block size-1.5 shrink-0 rounded-full bg-flame-500"></span>
+          <span>
+            <span class="font-semibold text-apple-ink">Aerospace Engineer</span> with formal specialization in{" "}
+            <span class="font-semibold text-apple-ink">GNC</span> (Guidance, Navigation &amp; Control).
+          </span>
+        </li>
+        <li class="flex items-start gap-3 text-sm text-apple-ink-2 leading-snug">
+          <span class="mt-1.5 inline-block size-1.5 shrink-0 rounded-full bg-flame-500"></span>
+          <span>
+            Background includes <span class="font-semibold text-apple-ink">GNC lead</span> on{" "}
+            <span class="font-semibold text-apple-ink">SWAT-SHOAL UUV swarm</span> programme (SENER).
+          </span>
+        </li>
+        <li class="flex items-start gap-3 text-sm text-apple-ink-2 leading-snug">
+          <span class="mt-1.5 inline-block size-1.5 shrink-0 rounded-full bg-flame-500"></span>
+          <span>
+            Experience in <span class="font-semibold text-apple-ink">Aerospace Configuration Management</span> across{" "}
+            <span class="font-semibold text-apple-ink">A320/A330/A340/A350</span> (Airbus Operations).
+          </span>
+        </li>
+        <li class="flex items-start gap-3 text-sm text-apple-ink-2 leading-snug">
+          <span class="mt-1.5 inline-block size-1.5 shrink-0 rounded-full bg-flame-500"></span>
+          <span>
+            Education: <span class="font-semibold text-apple-ink">M.S. Aerospace Engineering</span> (Embry‑Riddle Daytona,{" "}
+            <span class="font-semibold text-apple-ink">9.75/10</span>) and{" "}
+            <span class="font-semibold text-apple-ink">B.S. Aerospace Engineering</span> (Embry‑Riddle Prescott,{" "}
+            <span class="font-semibold text-apple-ink">9.83/10</span>).
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

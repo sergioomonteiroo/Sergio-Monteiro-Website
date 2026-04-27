@@ -1,0 +1,80 @@
+---
+import "../styles/global.css";
+import { profile } from "../data/profile";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = `${profile.name} — ${profile.role}`,
+  description = `${profile.name} — ${profile.subtitle}. ${profile.role} based in ${profile.location}.`,
+} = Astro.props;
+
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.toString();
+const ogImage = Astro.site ? new URL("/og-image.png", Astro.site).toString() : "/og-image.png";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="relative overflow-x-hidden">
+    <a href="#home" class="skip-link">Skip to content</a>
+    <slot />
+    <script is:inline>
+      /* Scroll-reveal — fade + lift on section entry */
+      (function () {
+        if (!('IntersectionObserver' in window)) return;
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reducedMotion) return;
+
+        const style = document.createElement('style');
+        style.textContent = `
+          .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s cubic-bezier(0.25,1,0.5,1), transform 0.55s cubic-bezier(0.25,1,0.5,1); }
+          .reveal.visible { opacity: 1; transform: translateY(0); }
+          .reveal-delay-1 { transition-delay: 0.08s; }
+          .reveal-delay-2 { transition-delay: 0.16s; }
+          .reveal-delay-3 { transition-delay: 0.24s; }
+        `;
+        document.head.appendChild(style);
+
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('article, .reveal-target').forEach((el) => {
+          el.classList.add('reveal');
+          io.observe(el);
+        });
+      })();
+    </script>
+  </body>
+</html>
