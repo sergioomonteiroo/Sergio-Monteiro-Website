@@ -58,7 +58,7 @@ export const education = [
     location: "Prescott, Arizona · USA",
     years: "2017 — 2021",
     gpa: "9.83 / 10.00",
-    image: "/images/Grad_Bachelors.jpg",
+    image: "/images/bachelors.png",
     featured: true,
     bullets: [
       "ERAU — #1 US undergraduate aerospace programme.",
