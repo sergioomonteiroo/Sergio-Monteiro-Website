@@ -14,12 +14,6 @@ const social4 = socials.filter((s) => ["linkedin", "tiktok", "instagram", "youtu
         Question about a video, a collaboration idea, or a role you'd like to discuss? Drop a note — I read everything.
       </p>
 
-      <a href="/sponsors" class="mt-5 inline-flex items-center gap-2 rounded-full border border-flame-500/30 bg-flame-500/8 px-4 py-2 font-mono text-xs uppercase tracking-wider text-flame-600 hover:bg-flame-500/15 transition">
-        <span class="size-1.5 rounded-full bg-flame-500"></span>
-        Brand partnerships → media kit
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-
       <div class="mt-8 grid gap-10 md:grid-cols-[1.1fr_1fr]">
         <!-- Left: form -->
         <form id="contact-form" action={FORMSPREE || `mailto:${profile.email}`} method="POST" data-mailto={FORMSPREE ? "false" : "true"} data-email={profile.email} class="flex flex-col gap-4">
