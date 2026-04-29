@@ -1,0 +1,361 @@
+---
+import "../styles/global.css";
+import { profile } from "../data/profile";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sergio Monteiro — Media Kit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
+      :root {
+        --ink: #1d1d1f;
+        --ink-2: #6e6e73;
+        --ink-3: #86868b;
+        --gray: #f5f5f7;
+        --border: #d2d2d7;
+        --flame: #0071e3;
+        --flame-soft: rgba(0, 113, 227, 0.08);
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { background: #e6e6e8; color: var(--ink); font-family: Inter, -apple-system, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .toolbar { position: fixed; top: 16px; right: 16px; z-index: 100; display: flex; gap: 8px; }
+      .toolbar button, .toolbar a { background: var(--flame); color: #fff; border: none; border-radius: 999px; padding: 10px 18px; font: 500 13px Inter; cursor: pointer; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+      .toolbar a.secondary { background: #fff; color: var(--ink); border: 1px solid var(--border); }
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 16mm auto;
+        background: #fff;
+        padding: 18mm 16mm;
+        box-shadow: 0 8px 32px rgba(0,0,0,.12);
+        page-break-after: always;
+        position: relative;
+        font-family: Inter, sans-serif;
+      }
+      .page:last-of-type { page-break-after: auto; }
+      .mono { font-family: 'JetBrains Mono', monospace; }
+      .label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--flame); }
+      h1.display { font-size: 56px; font-weight: 600; line-height: 1.04; letter-spacing: -0.03em; color: var(--ink); }
+      h1.display .accent { color: var(--flame); }
+      h2.display { font-size: 32px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
+      h3 { font-size: 16px; font-weight: 600; color: var(--ink); }
+      p { color: var(--ink-2); line-height: 1.55; font-size: 13px; }
+      .lead { font-size: 16px; color: var(--ink-2); line-height: 1.5; }
+      .footer-line { position: absolute; bottom: 14mm; left: 16mm; right: 16mm; display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-3); }
+      .card { border: 1px solid var(--border); border-radius: 16px; padding: 18px; background: #fff; }
+      .card.highlight { border-color: rgba(0,113,227,0.4); background: var(--flame-soft); }
+      .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+      .stat { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+      .stat .num { font-size: 28px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+      .stat .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin-top: 2px; }
+      .pkg-price { font-family: 'JetBrains Mono', monospace; color: var(--flame); font-size: 14px; margin-top: 6px; }
+      .pkg-list { list-style: none; padding-top: 12px; margin-top: 12px; border-top: 1px solid var(--border); }
+      .pkg-list li { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: var(--ink-2); padding: 3px 0; }
+      .pkg-list li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--flame); margin-top: 7px; flex-shrink: 0; }
+      .pill { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; background: var(--flame-soft); color: var(--flame); border: 1px solid rgba(0,113,227,0.3); border-radius: 999px; padding: 3px 8px; }
+      .step { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+      .step:last-child { border-bottom: none; }
+      .step .num-circle { width: 28px; height: 28px; border-radius: 50%; background: var(--flame); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; flex-shrink: 0; }
+      .step .body { flex: 1; }
+      .step .body h4 { font-size: 13px; font-weight: 600; color: var(--ink); }
+      .step .body p { font-size: 12px; margin-top: 2px; }
+      .cover { display: flex; flex-direction: column; justify-content: space-between; min-height: 261mm; }
+      .cover-top { padding-top: 30mm; }
+      .cover-quote { border-left: 3px solid var(--flame); padding-left: 18px; margin-top: 32px; }
+      .cover-quote p { font-size: 18px; line-height: 1.4; color: var(--ink); font-weight: 500; max-width: 480px; }
+      .cover-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+      .cover-bottom .row { display: flex; gap: 8px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-2); }
+      .cover-bottom .row strong { color: var(--ink); font-weight: 500; }
+      .channel { display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; }
+      .channel .left h4 { font-size: 15px; font-weight: 600; color: var(--ink); }
+      .channel .left p { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+      .channel .right { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--flame); }
+      .why-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+      .why-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--ink); padding: 12px; border: 1px solid var(--border); border-radius: 10px; line-height: 1.4; }
+      .why-list li::before { content: "✓"; color: var(--flame); font-weight: 700; flex-shrink: 0; }
+      .cta-card { border: 1px solid var(--border); border-radius: 20px; padding: 30px; text-align: center; background: var(--gray); margin-top: 24px; }
+      .cta-card h2 { font-size: 24px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
+      .cta-card p { margin-top: 8px; font-size: 13px; color: var(--ink-2); max-width: 380px; margin-left: auto; margin-right: auto; }
+      .cta-card .email { display: inline-block; margin-top: 18px; background: var(--flame); color: #fff; padding: 12px 24px; border-radius: 999px; font-weight: 500; font-size: 13px; text-decoration: none; }
+
+      @media print {
+        html, body { background: #fff; }
+        .toolbar { display: none !important; }
+        .page { margin: 0; box-shadow: none; page-break-after: always; }
+        .page:last-of-type { page-break-after: auto; }
+        @page { size: A4; margin: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <a class="secondary" href="/sponsors">← Back</a>
+      <button onclick="window.print()">🖨️ Print / Save as PDF</button>
+    </div>
+
+    <!-- PAGE 1: COVER -->
+    <section class="page cover">
+      <div class="cover-top">
+        <p class="label">Media Kit · 2026</p>
+        <h1 class="display" style="margin-top: 18px;">{profile.name}<br/><span class="accent">Aerospace Engineer.</span><br/>Content Creator.</h1>
+
+        <div class="cover-quote">
+          <p>Engineering that actually flies — and explainers that anyone can follow.</p>
+        </div>
+
+        <p style="margin-top: 36px; max-width: 460px; font-size: 14px; line-height: 1.6;">
+          I'm an Avionics Systems Engineer on the Eurofighter Typhoon at Airbus Defence &amp; Space. My short-form content reaches engineers and engineering students worldwide.
+        </p>
+      </div>
+
+      <div class="cover-bottom">
+        <div>
+          <div class="row"><strong>Email</strong> · {profile.email}</div>
+          <div class="row" style="margin-top: 6px;"><strong>Web</strong> · monteiro.ai</div>
+        </div>
+        <div>
+          <div class="row"><strong>Location</strong> · {profile.location}</div>
+          <div class="row" style="margin-top: 6px;"><strong>Languages</strong> · EN / ES / PT</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: ABOUT -->
+    <section class="page">
+      <p class="label">About</p>
+      <h2 class="display" style="margin-top: 8px;">A creator who's actually in the cockpit.</h2>
+
+      <p class="lead" style="margin-top: 18px; max-width: 560px;">
+        I don't post about engineering — I do engineering. By day I work on Eurofighter avionics; by night I translate that world into content engineers, students, and the broadly curious can follow.
+      </p>
+
+      <div style="margin-top: 32px;">
+        <p class="label">Why this matters for sponsors</p>
+        <p style="margin-top: 8px; max-width: 560px; font-size: 14px;">
+          My audience is high-intent: future and current engineers who buy real tools, software, and education. They follow for substance, not entertainment — which is exactly why STEM-adjacent brands see strong conversion here.
+        </p>
+      </div>
+
+      <div style="margin-top: 32px;">
+        <p class="label">Background</p>
+        <ul class="why-list">
+          <li>MS Aerospace Eng · Embry-Riddle Daytona · GPA 9.75/10</li>
+          <li>BS Aerospace Eng · Embry-Riddle Prescott · GPA 9.83/10</li>
+          <li>GNC specialist · UUV swarm program (SENER)</li>
+          <li>Avionics Systems · Eurofighter AJT (Airbus DS)</li>
+        </ul>
+      </div>
+
+      <div class="footer-line">
+        <span>Sergio Monteiro · Media Kit</span>
+        <span>Page 02</span>
+      </div>
+    </section>
+
+    <!-- PAGE 3: AUDIENCE -->
+    <section class="page">
+      <p class="label">Audience</p>
+      <h2 class="display" style="margin-top: 8px;">Who you'll reach.</h2>
+
+      <div class="grid-3" style="margin-top: 24px;">
+        <div class="stat"><div class="num">[X]k</div><div class="lbl">TikTok followers</div></div>
+        <div class="stat"><div class="num">[X]</div><div class="lbl">YouTube subs</div></div>
+        <div class="stat"><div class="num">[X]</div><div class="lbl">Instagram</div></div>
+        <div class="stat"><div class="num">[X]k</div><div class="lbl">LinkedIn</div></div>
+        <div class="stat"><div class="num">[X]</div><div class="lbl">Monthly views</div></div>
+        <div class="stat"><div class="num">[X]%</div><div class="lbl">Engagement rate</div></div>
+      </div>
+
+      <div style="margin-top: 32px;">
+        <p class="label">Demographics</p>
+        <div class="grid-2" style="margin-top: 12px;">
+          <div class="card">
+            <h3>Age</h3>
+            <p style="margin-top: 8px;">~[X]% are 18–34, the prime engineering-student and early-career engineer band.</p>
+          </div>
+          <div class="card">
+            <h3>Gender</h3>
+            <p style="margin-top: 8px;">Predominantly male (~[X]%), reflecting current aerospace demographics.</p>
+          </div>
+          <div class="card">
+            <h3>Top countries</h3>
+            <p style="margin-top: 8px;">USA · Spain · UK · Germany · Brazil · Portugal</p>
+          </div>
+          <div class="card">
+            <h3>Interests</h3>
+            <p style="margin-top: 8px;">CAD, MATLAB, Python, simulation, GNC, propulsion, careers in aerospace.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-line">
+        <span>Sergio Monteiro · Media Kit</span>
+        <span>Page 03</span>
+      </div>
+    </section>
+
+    <!-- PAGE 4: CHANNELS -->
+    <section class="page">
+      <p class="label">Channels</p>
+      <h2 class="display" style="margin-top: 8px;">Where the audience lives.</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
+        <div class="channel">
+          <div class="left">
+            <h4>TikTok</h4>
+            <p>Short-form aerospace explainers · primary growth channel</p>
+          </div>
+          <div class="right">@sergioomonteiroo0</div>
+        </div>
+        <div class="channel">
+          <div class="left">
+            <h4>YouTube</h4>
+            <p>Long-form deep-dives + Shorts</p>
+          </div>
+          <div class="right">@SergioMonteiroAero</div>
+        </div>
+        <div class="channel">
+          <div class="left">
+            <h4>Instagram</h4>
+            <p>Behind-the-scenes, daily life as an engineer</p>
+          </div>
+          <div class="right">@sergioomonteiroo</div>
+        </div>
+        <div class="channel">
+          <div class="left">
+            <h4>LinkedIn</h4>
+            <p>Industry-facing posts · senior engineer audience</p>
+          </div>
+          <div class="right">in/sergiomonteirog</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 32px;">
+        <p class="label">Top performing content</p>
+        <div class="grid-2" style="margin-top: 12px;">
+          <div class="card">
+            <p class="mono" style="font-size: 11px; color: var(--flame);">[X] views</p>
+            <h3 style="margin-top: 4px;">[Top video title 1]</h3>
+            <p style="margin-top: 6px; font-size: 12px;">[One-line context]</p>
+          </div>
+          <div class="card">
+            <p class="mono" style="font-size: 11px; color: var(--flame);">[X] views</p>
+            <h3 style="margin-top: 4px;">[Top video title 2]</h3>
+            <p style="margin-top: 6px; font-size: 12px;">[One-line context]</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-line">
+        <span>Sergio Monteiro · Media Kit</span>
+        <span>Page 04</span>
+      </div>
+    </section>
+
+    <!-- PAGE 5: PACKAGES -->
+    <section class="page">
+      <p class="label">Packages</p>
+      <h2 class="display" style="margin-top: 8px;">How we work together.</h2>
+
+      <div class="grid-3" style="margin-top: 24px;">
+        <div class="card">
+          <h3>Integrated Mention</h3>
+          <div class="pkg-price">€300 – €500</div>
+          <p style="margin-top: 10px; font-size: 12px;">15-second native brand mention inside a 60-second short.</p>
+          <ul class="pkg-list">
+            <li>1 TikTok with native mention</li>
+            <li>Cross-post to YouTube Shorts</li>
+            <li>30-day usage rights</li>
+          </ul>
+        </div>
+        <div class="card highlight">
+          <span class="pill">Most popular</span>
+          <h3 style="margin-top: 10px;">Dedicated Post</h3>
+          <div class="pkg-price">€600 – €1,000</div>
+          <p style="margin-top: 10px; font-size: 12px;">A full short-form video built around your product.</p>
+          <ul class="pkg-list">
+            <li>1 dedicated TikTok (60–90s)</li>
+            <li>Cross-post to YouTube Shorts</li>
+            <li>IG Story teaser</li>
+            <li>60-day usage rights</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Bundle</h3>
+          <div class="pkg-price">€1,200 – €1,800</div>
+          <p style="margin-top: 10px; font-size: 12px;">Multi-platform campaign with creative depth.</p>
+          <ul class="pkg-list">
+            <li>1 dedicated TikTok</li>
+            <li>1 YouTube Short / segment</li>
+            <li>1 Instagram Story set</li>
+            <li>1 LinkedIn post</li>
+            <li>90-day usage rights</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top: 24px; font-size: 11px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace;">
+        All packages include creative direction · scripting · brand-safe integration · performance report 14 days post-publish. Final rates depend on scope, exclusivity, and usage rights.
+      </p>
+
+      <div class="footer-line">
+        <span>Sergio Monteiro · Media Kit</span>
+        <span>Page 05</span>
+      </div>
+    </section>
+
+    <!-- PAGE 6: PROCESS + CONTACT -->
+    <section class="page">
+      <p class="label">Process</p>
+      <h2 class="display" style="margin-top: 8px;">From hello to live in 4 weeks.</h2>
+
+      <div style="margin-top: 24px;">
+        <div class="step">
+          <div class="num-circle">1</div>
+          <div class="body"><h4>You reach out</h4><p>Describe the product, goals, and timeline.</p></div>
+        </div>
+        <div class="step">
+          <div class="num-circle">2</div>
+          <div class="body"><h4>I respond within 48 hours</h4><p>With a creative angle and rate.</p></div>
+        </div>
+        <div class="step">
+          <div class="num-circle">3</div>
+          <div class="body"><h4>We agree on scope</h4><p>Contract signed, 50% deposit.</p></div>
+        </div>
+        <div class="step">
+          <div class="num-circle">4</div>
+          <div class="body"><h4>Script, film, edit</h4><p>One round of revisions included.</p></div>
+        </div>
+        <div class="step">
+          <div class="num-circle">5</div>
+          <div class="body"><h4>Goes live</h4><p>On agreed date. Final 50% on publish.</p></div>
+        </div>
+        <div class="step">
+          <div class="num-circle">6</div>
+          <div class="body"><h4>Performance report</h4><p>Delivered 14 days post-publish.</p></div>
+        </div>
+      </div>
+
+      <div class="cta-card">
+        <p class="label">Ready to talk</p>
+        <h2 style="margin-top: 6px;">Let's build something your audience will remember.</h2>
+        <p>Tell me about your product and I'll come back within 48 hours with a creative angle.</p>
+        <a href={`mailto:${profile.email}`} class="email">{profile.email}</a>
+      </div>
+
+      <div class="footer-line">
+        <span>Sergio Monteiro · monteiro.ai</span>
+        <span>Page 06</span>
+      </div>
+    </section>
+  </body>
+</html>
