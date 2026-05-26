@@ -8,7 +8,12 @@ export const profile = {
   // Brand hook — edit freely.
   tagline: "From GNC algorithms to Eurofighter avionics.",
   brandLine: "Aerospace Engineering & AI Solutions",
-  pitch: "Building the aerospace systems of today and the AI solutions of tomorrow.",
+  pitch: "Discipline forged balancing the world's most demanding aerospace program with varsity athletics — now powering Eurofighter avionics and AI.",
+  // Hero eyebrow — short positioning line shown above the name.
+  eyebrow: {
+    badge: 'The "Harvard of the Skies"',
+    line: "Embry-Riddle Graduate · NAIA Scholar-Athlete · 100% Merit-Funded",
+  },
   aboutLead:
     "I grew up picking apart how things fly and never stopped. Formal training in Guidance, Navigation & Control; day job integrating avionics on the world's leading fighter jet; a side channel translating all of it into clips anyone can follow.",
   quote: "Precision is a discipline. Curiosity is a habit.",
@@ -38,12 +43,14 @@ export const education = [
     title: "Aerospace Engineering, Master's",
     concentration: "Guidance, Navigation, Dynamics & Controls",
     school: "Embry-Riddle Aeronautical University",
+    schoolTagline: 'The "Harvard of the Skies" — world\'s leading aerospace institution',
     schoolUrl: "https://erau.edu",
     location: "Daytona Beach, Florida · USA",
     years: "2021 — 2023",
     gpa: "9.75 / 10.00",
     image: "/images/Grad_Masters.jpg",
     featured: true,
+    heroBadges: ["100% Scholarship-Funded", "Graduate Teaching Assistant"],
     bullets: [
       "Thesis & coursework focused on GNC of aerospace vehicles.",
       "Top of class in the Dynamics & Controls specialisation.",
@@ -54,12 +61,14 @@ export const education = [
     title: "Aerospace Engineering, Bachelor's",
     concentration: "Astronautics",
     school: "Embry-Riddle Aeronautical University",
+    schoolTagline: "#1 US undergraduate aerospace program",
     schoolUrl: "https://erau.edu",
     location: "Prescott, Arizona · USA",
     years: "2017 — 2021",
     gpa: "9.83 / 10.00",
     image: "/images/bachelors.png",
     featured: true,
+    heroBadges: ["Top 10 NAIA Scholar-Athlete", "Captain · Men's Soccer", "100% Scholarship-Funded"],
     bullets: [
       "ERAU — #1 US undergraduate aerospace programme.",
       "Student-athlete; captain of the Men's Soccer team.",

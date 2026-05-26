@@ -7,6 +7,16 @@ const featuredEducation = education.filter((e) => e.featured);
   <div class="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-10 px-6 pt-20 md:pt-28 pb-6 md:grid-cols-[1.15fr_1fr] md:gap-16">
     <!-- Left: copy -->
     <div>
+      <div class="mb-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-flame-500/25 bg-flame-500/8 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-flame-600">
+          <span class="size-1.5 rounded-full bg-flame-500"></span>
+          {profile.eyebrow.badge}
+        </span>
+        <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-apple-ink-2">
+          {profile.eyebrow.line}
+        </span>
+      </div>
+
       <h1 class="font-display font-semibold text-apple-ink leading-[1.04]" style="font-size: clamp(3rem, 8vw, 5.5rem); letter-spacing: -0.03em;">
         {profile.name}
       </h1>
@@ -104,8 +114,18 @@ const featuredEducation = education.filter((e) => e.featured);
               <p class="font-mono text-xs text-apple-ink-3">{e.years}</p>
               <h3 class="mt-0.5 font-display text-base font-semibold text-apple-ink leading-snug">{e.title}</h3>
               <p class="mt-1 font-mono text-xs text-apple-ink-2">{e.school}</p>
-              <p class="font-mono text-[11px] text-apple-ink-3">{e.location}</p>
-              {e.gpa && <p class="mt-2 inline-block rounded-md bg-flame-500/8 border border-flame-500/20 px-2 py-0.5 font-mono text-[11px] text-flame-600">GPA {e.gpa}</p>}
+              {e.schoolTagline && (
+                <p class="mt-0.5 font-display text-[12px] italic text-flame-600 leading-snug">{e.schoolTagline}</p>
+              )}
+              <p class="mt-0.5 font-mono text-[11px] text-apple-ink-3">{e.location}</p>
+              <div class="mt-2 flex flex-wrap gap-1.5">
+                {e.gpa && (
+                  <span class="inline-block rounded-md bg-flame-500/8 border border-flame-500/20 px-2 py-0.5 font-mono text-[11px] text-flame-600">GPA {e.gpa}</span>
+                )}
+                {e.heroBadges?.map((b) => (
+                  <span class="inline-block rounded-md bg-apple-ink/5 border border-apple-border px-2 py-0.5 font-mono text-[11px] text-apple-ink-2">{b}</span>
+                ))}
+              </div>
             </div>
           </div>
         </article>
