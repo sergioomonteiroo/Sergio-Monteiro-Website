@@ -1,14 +1,14 @@
 export const profile = {
   name: "Sergio Monteiro",
-  role: "Avionics Systems Engineer",
-  subtitle: "Eurofighter AJT — Airbus Defence & Space",
+  role: "Eurofighter Avionics Engineer",
+  subtitle: "Airbus Defence & Space",
   location: "Madrid, Spain",
   email: "aerospace.sm@gmail.com",
   phone: "+34 630 514 880",
   // Brand hook — edit freely.
   tagline: "From GNC algorithms to Eurofighter avionics.",
-  brandLine: "Aerospace Engineering & AI Solutions",
-  pitch: "Discipline forged balancing the world's most demanding aerospace program with varsity athletics — now powering Eurofighter avionics and AI.",
+  brandLine: "Eurofighter Avionics Engineer — Airbus Defence & Space",
+  pitch: "Discipline forged balancing the <strong class=\"font-semibold text-flame-600\">world's most demanding aerospace</strong> program with varsity athletics — now powering <strong class=\"font-semibold text-flame-600\">Eurofighter</strong> avionics &amp; <strong class=\"font-semibold text-flame-600\">AI</strong>.",
   // Hero eyebrow — short positioning line shown above the name.
   eyebrow: {
     badge: 'The "Harvard of the Skies"',
