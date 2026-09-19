@@ -1,6 +1,7 @@
 ---
 import { profile, socials } from "../data/profile";
 import Icon from "./Icon.astro";
+const home = Astro.url.pathname === "/" ? "" : "/";
 const items = [
   { href: "#media", label: "Media" },
   { href: "#about", label: "About" },
@@ -10,20 +11,16 @@ const items = [
 ];
 const social4 = socials.filter((s) => ["linkedin", "tiktok", "instagram", "youtube"].includes(s.icon));
 ---
-<nav id="site-nav" class="fixed top-0 left-0 right-0 z-40 apple-glass">
+<nav id="site-nav" class="sticky top-0 z-40 apple-glass">
   <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-6 py-2 md:py-3">
-    <a href="#home" class="flex items-center group shrink-0" aria-label={`${profile.name} — home`}>
-      <img
-        src="/images/new-logo.png"
-        alt={profile.name}
-        class="h-10 sm:h-12 md:h-14 w-auto object-contain"
-      />
+    <a href={`${home}#home`} class="flex items-center group shrink-0" aria-label={`${profile.name} — home`}>
+      <span class="font-display text-sm font-semibold tracking-tight text-apple-ink">{profile.name}</span>
     </a>
 
-    <ul id="nav-links" class="hidden md:flex items-center gap-1 text-[12px] font-display font-normal">
+    <ul id="nav-links" class="hidden lg:flex items-center gap-1 text-[12px] font-display font-normal">
       {items.map((i) => (
         <li>
-          <a href={i.href} data-nav-link data-target={i.href.slice(1)}
+          <a href={`${home}${i.href}`} data-nav-link data-target={i.href.slice(1)}
              class="relative inline-flex items-center rounded-md px-3 py-2 text-apple-ink-2 hover:text-apple-ink transition">
             <span>{i.label}</span>
             <span data-nav-indicator class="pointer-events-none absolute inset-x-3 -bottom-0.5 h-0.5 origin-center scale-x-0 rounded-full bg-flame-500 transition-transform duration-300"></span>
@@ -33,22 +30,22 @@ const social4 = socials.filter((s) => ["linkedin", "tiktok", "instagram", "youtu
     </ul>
 
     <div class="flex items-center gap-2 shrink-0">
-      <div class="flex items-center gap-1">
+      <div class="hidden sm:flex items-center gap-1">
         {social4.map((s) => (
           <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-             class="inline-flex size-9 sm:size-10 items-center justify-center rounded-md border border-black/10 text-apple-ink-2 hover:text-flame-500 hover:border-flame-500/30 hover:bg-black/5 transition">
+             class="inline-flex size-9 sm:size-10 items-center justify-center rounded-md border border-white/15 text-apple-ink-2 hover:text-flame-500 hover:border-flame-500/30 hover:bg-white/5 transition">
             <Icon name={s.icon} class="size-4" />
           </a>
         ))}
       </div>
 
       <a id="nav-cta" href={`mailto:${profile.email}`}
-         class="hidden sm:inline-flex items-center gap-2 rounded-full bg-flame-500 px-4 py-1.5 text-xs font-display font-medium text-white hover:bg-flame-600 transition">
+         class="hidden sm:inline-flex items-center gap-2 rounded-full bg-flame-500 px-4 py-1.5 text-xs font-display font-medium text-space-950 hover:bg-flame-600 transition">
         Get in touch
       </a>
 
       <button id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel"
-              class="md:hidden inline-flex size-11 items-center justify-center rounded-md border border-black/10 text-apple-ink-2 hover:text-apple-ink transition">
+              class="lg:hidden inline-flex size-11 items-center justify-center rounded-md border border-white/15 text-apple-ink-2 hover:text-apple-ink transition">
         <svg id="nav-toggle-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="size-5" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <svg id="nav-toggle-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden size-5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -56,12 +53,12 @@ const social4 = socials.filter((s) => ["linkedin", "tiktok", "instagram", "youtu
   </div>
 
   <!-- Mobile menu panel -->
-  <div id="nav-panel" role="dialog" aria-modal="false" aria-label="Main menu" class="hidden md:hidden bg-apple-gray/95 backdrop-blur border-t border-black/8">
+  <div id="nav-panel" role="dialog" aria-modal="false" aria-label="Main menu" class="hidden lg:hidden bg-apple-gray/95 backdrop-blur border-t border-white/10">
     <ul class="mx-auto flex w-full max-w-6xl flex-col gap-1 px-6 py-4 font-display text-sm font-normal">
       {items.map((i) => (
         <li>
-          <a href={i.href} data-nav-link data-target={i.href.slice(1)}
-             class="flex items-center justify-between rounded-md px-3 py-3 text-apple-ink-2 hover:bg-black/5 hover:text-apple-ink transition"
+          <a href={`${home}${i.href}`} data-nav-link data-target={i.href.slice(1)}
+             class="flex items-center justify-between rounded-md px-3 py-3 text-apple-ink-2 hover:bg-white/5 hover:text-apple-ink transition"
              data-nav-close>
             <span>{i.label}</span>
             <span aria-hidden="true" class="font-mono text-xs text-apple-ink-3">→</span>
@@ -70,14 +67,14 @@ const social4 = socials.filter((s) => ["linkedin", "tiktok", "instagram", "youtu
       ))}
       <li class="mt-2">
         <a href={`mailto:${profile.email}`}
-           class="block rounded-full bg-flame-500 px-3 py-3 text-center font-display font-medium text-white hover:bg-flame-600 transition"
+           class="block rounded-full bg-flame-500 px-3 py-3 text-center font-display font-medium text-space-950 hover:bg-flame-600 transition"
            data-nav-close>Get in touch</a>
       </li>
-      <li class="mt-3 pt-3 border-t border-black/8">
+      <li class="mt-3 pt-3 border-t border-white/10">
         <div class="flex flex-wrap gap-2 px-3">
           {social4.map((s) => (
             <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-               class="flex size-11 items-center justify-center rounded-md border border-black/10 text-apple-ink-2 hover:text-flame-500 hover:border-flame-500/30 transition"
+               class="flex size-11 items-center justify-center rounded-md border border-white/15 text-apple-ink-2 hover:text-flame-500 hover:border-flame-500/30 transition"
                data-nav-close>
               <Icon name={s.icon} class="size-5" />
             </a>
@@ -89,16 +86,16 @@ const social4 = socials.filter((s) => ["linkedin", "tiktok", "instagram", "youtu
 </nav>
 
 <style is:global>
-  /* Apple light translucent nav */
+  /* Midnight navigation echoes the banner. */
   .apple-glass {
-    background-color: rgba(245, 245, 247, 0.85);
+    background-color: rgba(5, 19, 34, 0.94);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(143, 215, 255, 0.18);
   }
   /* Active section indicator */
-  #nav-links a[data-active="true"] { color: #1d1d1f; }
-  #nav-links a[data-active="true"] [data-nav-indicator] { transform: scaleX(1); background-color: #0071e3; }
+  #nav-links a[data-active="true"] { color: #edf5ff; }
+  #nav-links a[data-active="true"] [data-nav-indicator] { transform: scaleX(1); background-color: #ff963f; }
 </style>
 
 <script is:inline>

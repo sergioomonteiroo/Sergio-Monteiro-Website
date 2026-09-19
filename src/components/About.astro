@@ -1,13 +1,11 @@
 ---
 import { profile } from "../data/profile";
 ---
-<section id="about" class="mx-auto w-full max-w-6xl px-6 py-8 md:py-12">
-  <div class="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.3fr] md:items-center">
-    <!-- Portrait with asymmetric frame -->
-    <div class="relative order-2 md:order-1">
-      <div class="absolute -top-4 -left-4 h-24 w-24 border-t-2 border-l-2 border-flame-500/60"></div>
-      <div class="absolute -bottom-4 -right-4 h-24 w-24 border-b-2 border-r-2 border-flame-500/60"></div>
-      <div class="relative aspect-[3/4] overflow-hidden rounded-2xl border border-apple-border bg-[#e8e8ed]">
+<section id="about" class="mx-auto w-full max-w-6xl px-6 py-8 md:py-9">
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-[320px_1fr] md:items-center">
+    <!-- Continuous frame follows the photo's rounded corners. -->
+    <div class="about-portrait-frame order-2 mx-auto w-full max-w-[320px] md:order-1">
+      <div class="relative aspect-[3/4] overflow-hidden rounded-[14px] bg-surface">
         <img src="/images/sergioauro.png" alt="Sergio Monteiro" loading="lazy" decoding="async" class="h-full w-full object-cover object-top"
              onerror="this.style.display='none';" />
       </div>
@@ -23,8 +21,8 @@ import { profile } from "../data/profile";
           <span class="mt-1.5 inline-block size-1.5 shrink-0 rounded-full bg-flame-500"></span>
           <span>
             <span class="font-semibold text-apple-ink">Avionics Systems Engineer</span> working on{" "}
-            <span class="font-semibold text-apple-ink">Eurofighter AJT</span> at{" "}
-            <span class="font-semibold text-apple-ink">Airbus Defence &amp; Space</span> (Madrid, Spain).
+            <span class="font-semibold text-apple-ink">Eurofighter Avionics Joint Team (AJT)</span> at{" "}
+            <span class="font-semibold text-apple-ink">Airbus Defence &amp; Space</span> ({profile.location}), covering communications, AGCAS and armament integration.
           </span>
         </li>
         <li class="flex items-start gap-3 text-sm text-apple-ink-2 leading-snug">

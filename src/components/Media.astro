@@ -2,7 +2,7 @@
 import { media } from "../data/profile";
 ---
 <section id="media" class="bg-apple-white">
-  <div class="mx-auto w-full max-w-6xl px-6 py-10 md:py-14">
+  <div class="mx-auto w-full max-w-6xl px-6 py-8 md:py-9">
     <div class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
       <div>
         <p class="font-mono text-xs uppercase tracking-wider text-flame-500">Brand</p>
@@ -13,11 +13,11 @@ import { media } from "../data/profile";
       </p>
     </div>
 
-    <div class="mt-8 grid gap-4 md:grid-cols-3">
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
       {media.map((m) => (
         <a href={m.href} target="_blank" rel="noopener noreferrer" aria-label={`${m.title} — ${m.kind === "video" ? "Watch" : "Read"} on ${m.platform}`}
-           class="group relative flex flex-col overflow-hidden rounded-2xl border border-apple-border bg-white apple-card-shadow transition hover:-translate-y-0.5 hover:border-apple-border-mid">
-          <div class="relative aspect-video overflow-hidden bg-[#e8e8ed]">
+           class="group relative flex flex-col overflow-hidden rounded-2xl border border-apple-border bg-surface apple-card-shadow transition hover:-translate-y-0.5 hover:border-apple-border-mid">
+          <div class="relative aspect-video overflow-hidden bg-surface">
             <img src={m.cover} alt=""
                  loading="lazy" decoding="async"
                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
@@ -28,7 +28,7 @@ import { media } from "../data/profile";
             </span>
             {m.kind === "video" && (
               <span class="absolute inset-0 flex items-center justify-center">
-                <span class="flex size-14 items-center justify-center rounded-full bg-flame-500 text-white shadow-xl transition group-hover:scale-110">
+                <span class="flex size-14 items-center justify-center rounded-full bg-flame-500 text-space-950 shadow-xl transition group-hover:scale-110">
                   <svg viewBox="0 0 24 24" fill="currentColor" class="size-6 translate-x-0.5" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
                 </span>
               </span>

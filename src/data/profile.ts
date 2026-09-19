@@ -2,7 +2,7 @@ export const profile = {
   name: "Sergio Monteiro",
   role: "Eurofighter Avionics Engineer",
   subtitle: "Airbus Defence & Space",
-  location: "Madrid, Spain",
+  location: "Warton, UK",
   email: "aerospace.sm@gmail.com",
   phone: "+34 630 514 880",
   // Brand hook — edit freely.
@@ -21,7 +21,7 @@ export const profile = {
   portrait: "/images/portrait.jpg",
   aboutBullets: [
     "Aerospace Engineer — specialised in GNC (Guidance, Navigation & Control).",
-    "Avionics Systems Engineer, Eurofighter AJT at Airbus Defence & Space.",
+    "Avionics Systems Engineer, Eurofighter Avionics Joint Team (AJT) at Airbus Defence & Space, Warton, UK.",
     "Ex-GNC lead on SWAT-SHOAL UUV swarm programme (SENER).",
     "Ex-Configuration Mgmt on A320/A330/A340/A350 (Airbus Operations).",
     "MS Aerospace Eng. — Embry-Riddle Daytona (9.75 / 10).",
@@ -33,7 +33,7 @@ export const profile = {
     { short: "Sigma Gamma Tau", full: "Sigma Gamma Tau — national aerospace engineering honor society", logo: "/images/SGT Logo.gif" },
   ],
   currentPosition: {
-    title: "Avionics Systems Engineer, Eurofighter AJT",
+    title: "Avionics Systems Engineer — Eurofighter Avionics Joint Team (AJT)",
     company: "Airbus Defence & Space",
   },
 };
@@ -110,16 +110,18 @@ export const education = [
 export const work = [
   {
     company: "Airbus Defence & Space",
-    role: "Avionics Systems Engineer — Eurofighter AJT",
-    location: "Madrid, Spain",
+    role: "Avionics Systems Engineer — Eurofighter Avionics Joint Team (AJT)",
+    location: "Warton, UK",
     period: "Sep 2025 — Present",
     initials: "AD",
     current: true,
     bullets: [
-      "FET Team: <strong class=\"font-bold text-flame-500\">end-to-end avionics integration</strong> across the full Eurofighter platform.",
-      "TADYC-7: <strong class=\"font-bold text-flame-500\">Fighters Communications System Integration</strong>.",
-      "Ownership: requirements, interfaces, and <strong class=\"font-bold text-flame-500\">DOORS traceability</strong> end-to-end.",
-      "Joint design: Eurofighter Consortium Partners.",
+      "Contribute to <strong class=\"font-bold text-flame-500\">system-level avionics definition</strong> for AGCAS (Automatic Ground Collision Avoidance System), laser designating pods and air-to-air missiles, including functional requirements and interfaces.",
+      "Integrate communications systems within <strong class=\"font-bold text-flame-500\">TADYC-7</strong> (Fighters Communications System Integration Team), covering MIDS, VMF, CESMO and JREAP data links.",
+      "Work with Eurofighter consortium partners on system and subsystem designs, contractual interoperability, and Level 2 functional requirements, interfaces and protocols.",
+      "Develop system-element designs aligned with architecture models; maintain <strong class=\"font-bold text-flame-500\">requirements and traceability in DOORS</strong> and contribute to hazard analysis.",
+      "Define lifecycle activities, checkpoints, reviews and maturity expectations to meet regulatory and programme assurance requirements.",
+      "Collaborate across engineering, manufacturing and industrial design from early development through serial production and in-service support.",
     ],
   },
   {
@@ -162,8 +164,8 @@ export const projects = [
     image: "/images/IMG_1691.jpeg",
     featured: true,
     bullets: [
-      "Integration of all Eurofighter comms systems.",
-      "Data Link ownership (MIDS, VMF, CESMO, JREAP).",
+      "Communications integration within Eurofighter AJT, Warton.",
+      "TADYC-7: MIDS, VMF, CESMO and JREAP data links.",
       "Level-2 design — requirements, interfaces, protocols.",
       "DOORS traceability & hazard analysis.",
     ],

@@ -13,15 +13,21 @@ import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 ---
 <Base>
+  <header id="home" class="brand-banner">
+    <h1 class="sr-only">Sergio Monteiro — Aerospace, AI, Impact</h1>
+    <img src="/images/banner.png" alt="Sergio Monteiro — Aerospace, AI, Impact. A glowing Earth and Eurofighter above the clouds at sunset." width="2056" height="765" fetchpriority="high" decoding="async" />
+  </header>
   <Nav />
+  <main id="main-content">
   <Hero />
+  <Experience />
   <Media />
   <About />
   <Education />
-  <Experience />
   <Projects />
   <Skills />
   <Awards />
   <Contact />
+  </main>
   <Footer />
 </Base>

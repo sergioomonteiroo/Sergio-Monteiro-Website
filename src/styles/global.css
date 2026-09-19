@@ -1,32 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Apple blue accent ───────────────────────────────────────── */
-  --color-flame-400: #2997ff;
-  --color-flame-500: #0071e3;
-  --color-flame-600: #0066cc;
-  --color-flame-700: #0059b3;
+  /* ── Sunset orange accent ───────────────────────────────────────── */
+  --color-flame-400: #ffb578;
+  --color-flame-500: #ff963f;
+  --color-flame-600: #ffb578;
+  --color-flame-700: #ffd1a6;
 
   /* ── Dark surfaces (hero / nav / footer) ─────────────────────── */
-  --color-space-800: #272729;
-  --color-space-900: #1d1d1f;
-  --color-space-950: #000000;
+  --color-space-800: #122c46;
+  --color-space-900: #051322;
+  --color-space-950: #041121;
 
   /* ── Text on dark surfaces ───────────────────────────────────── */
-  --color-ink-100: #f5f5f7;
-  --color-ink-200: #d2d2d7;
-  --color-ink-300: #a1a1a6;
-  --color-ink-400: #6e6e73;
-  --color-ink-500: #424245;
+  --color-ink-100: #edf5ff;
+  --color-ink-200: #d0e0ef;
+  --color-ink-300: #adc1d5;
+  --color-ink-400: #b2c5d8;
+  --color-ink-500: #93abc2;
 
-  /* ── Apple light surface tokens ──────────────────────────────── */
-  --color-apple-gray: #f5f5f7;
-  --color-apple-white: #ffffff;
-  --color-apple-ink: #1d1d1f;
-  --color-apple-ink-2: #6e6e73;
-  --color-apple-ink-3: #86868b;
-  --color-apple-border: #d2d2d7;
-  --color-apple-border-mid: #86868b;
+  /* ── Navy surface tokens ──────────────────────────────── */
+  --color-apple-gray: #071a2d;
+  --color-apple-white: #0b2239;
+  --color-apple-ink: #edf5ff;
+  --color-apple-ink-2: #b2c5d8;
+  --color-apple-ink-3: #94aec6;
+  --color-apple-border: #28435c;
+  --color-apple-border-mid: #94aec6;
 
   /* ── Typography ──────────────────────────────────────────────── */
   --font-display: Inter, ui-sans-serif, system-ui, sans-serif;
@@ -37,10 +37,10 @@
   --default-transition-duration: 200ms;
 }
 
-/* Base — Apple pale gray canvas, near-black text */
+/* Banner palette: midnight navy, ice blue and sunset amber. */
 html {
-  background-color: #f5f5f7;
-  color: #1d1d1f;
+  background-color: #071a2d;
+  color: #edf5ff;
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -51,9 +51,9 @@ body {
   min-height: 100dvh;
 }
 
-/* Focus ring — Apple blue */
+/* High-contrast keyboard focus */
 :focus-visible {
-  outline: 2px solid #0071e3;
+  outline: 2px solid #50baff;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -66,8 +66,8 @@ body {
   left: 0.5rem;
   z-index: 100;
   padding: 0.5rem 0.75rem;
-  background: #0071e3;
-  color: #ffffff;
+  background: #50baff;
+  color: #0b2239;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 600;
@@ -77,7 +77,7 @@ body {
 }
 .skip-link:focus-visible {
   transform: translateY(0);
-  outline: 2px solid #1d1d1f;
+  outline: 2px solid #edf5ff;
   outline-offset: 2px;
 }
 
@@ -94,4 +94,35 @@ body {
 /* Apple card shadow */
 .apple-card-shadow {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 20px 0px;
+}
+
+/* Shared surface and action styles for the testing edition. */
+@theme {
+  --color-surface: #102b45;
+  --color-sunset: #ff963f;
+}
+html { color-scheme: dark; }
+::selection { background: #ff963f; color: #041121; }
+.apple-card-shadow { box-shadow: 0 10px 32px rgb(0 7 18 / 18%); }
+.sunset-button { background: #ff963f; color: #071a2d; }
+.sunset-button:hover { background: #ffb578; }
+/* Trim only sky and lower clouds; retain the full horizontal artwork. */
+.brand-banner { width: 100%; aspect-ratio: 2056 / 410; overflow: hidden; background: #041121; }
+.brand-banner img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.intro-section { background: linear-gradient(135deg, #0b253e, #071a2d 65%); }
+:root { --divider-gradient: linear-gradient(90deg, #50baff, #28435c 55%, #ff963f); }
+.section-rule { height: 2px; background: var(--divider-gradient); }
+/* Match every horizontal separator to the blue-to-orange section rule. */
+.border-t {
+  border-top-width: 2px;
+  border-image: var(--divider-gradient) 1;
+}
+.apple-glass {
+  border-bottom-width: 2px;
+  border-image: var(--divider-gradient) 1;
+}
+.about-portrait-frame {
+  padding: 2px;
+  border-radius: 16px;
+  background: var(--divider-gradient);
 }

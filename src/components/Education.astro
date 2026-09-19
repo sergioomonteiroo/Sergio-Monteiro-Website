@@ -3,15 +3,15 @@ import { education } from "../data/profile";
 const featured = education.filter((e) => e.featured);
 const rest = education.filter((e) => !e.featured);
 ---
-<section id="education" class="mx-auto w-full max-w-6xl px-6 py-10 md:py-14">
+<section id="education" class="mx-auto w-full max-w-6xl px-6 py-8 md:py-9">
   <p class="font-mono text-xs uppercase tracking-wider text-flame-500">Education</p>
   <h2 class="mt-1 font-display text-4xl sm:text-5xl font-semibold text-apple-ink">Where I trained</h2>
 
-  <div class="mt-10 space-y-8">
+  <div class="mt-7 space-y-8">
     {featured.map((e) => (
       <article class="grid grid-cols-1 gap-6 md:grid-cols-[220px_1fr] md:items-start">
-        <div class="overflow-hidden rounded-xl bg-[#e8e8ed]">
-          <img src={e.image} alt="" loading="lazy" decoding="async" class="h-48 w-full object-cover object-[50%_25%] md:h-auto md:aspect-[3/4] md:object-center"
+        <div class="overflow-hidden rounded-xl bg-surface">
+          <img src={e.image} alt="" loading="lazy" decoding="async" class="h-48 w-full object-cover object-[50%_25%] md:h-52"
                onerror="this.style.display='none'" />
         </div>
         <div>
@@ -39,12 +39,12 @@ const rest = education.filter((e) => !e.featured);
   </div>
 
   {rest.length > 0 && (
-    <div class="mt-10 border-t border-apple-border pt-6">
+    <div class="mt-7 border-t border-apple-border pt-6">
       <p class="font-mono text-xs uppercase tracking-wider text-apple-ink-3 mb-4">Earlier education</p>
       <div class="grid gap-4 md:grid-cols-2">
         {rest.map((e) => (
-          <div class="flex items-start gap-4 rounded-xl border border-apple-border bg-white p-4 apple-card-shadow">
-            <div class="size-14 shrink-0 overflow-hidden rounded-lg bg-[#e8e8ed]">
+          <div class="flex items-start gap-4 rounded-xl border border-apple-border bg-surface p-4 apple-card-shadow">
+            <div class="size-14 shrink-0 overflow-hidden rounded-lg bg-surface">
               <img src={e.image} alt="" loading="lazy" decoding="async" class="h-full w-full object-cover" onerror="this.style.display='none'" />
             </div>
             <div class="flex-1 min-w-0">

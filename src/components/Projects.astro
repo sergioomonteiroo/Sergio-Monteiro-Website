@@ -4,24 +4,24 @@ const featured = projects.filter((p) => p.featured);
 const rest = projects.filter((p) => !p.featured);
 ---
 <section id="projects" class="bg-apple-white">
-  <div class="mx-auto w-full max-w-6xl px-6 py-10 md:py-14">
+  <div class="mx-auto w-full max-w-6xl px-6 py-8 md:py-9">
     <p class="font-mono text-xs uppercase tracking-wider text-flame-500">Portfolio</p>
     <h2 class="mt-1 font-display text-4xl sm:text-5xl font-semibold text-apple-ink">Selected work</h2>
 
-    <div class="mt-8 grid gap-5 md:grid-cols-3">
+    <div class="mt-6 grid gap-5 md:grid-cols-3">
       {featured.map((p) => (
-        <article class="group relative flex flex-col overflow-hidden rounded-2xl border border-apple-border bg-white apple-card-shadow transition hover:-translate-y-0.5 hover:border-apple-border-mid">
-          <div class="relative aspect-[4/3] overflow-hidden bg-[#e8e8ed]">
+        <article class="group relative flex flex-col overflow-hidden rounded-2xl border border-apple-border bg-surface apple-card-shadow transition hover:-translate-y-0.5 hover:border-apple-border-mid">
+          <div class="relative aspect-[4/3] overflow-hidden bg-surface">
             {p.image ? (
               <img src={p.image} alt="" loading="lazy" decoding="async"
                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                    onerror="this.style.display='none';" />
             ) : (
-              <div class="h-full w-full bg-[#e8e8ed]"></div>
+              <div class="h-full w-full bg-surface"></div>
             )}
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-            <span class="absolute top-3 left-3 rounded-md bg-black/50 backdrop-blur px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-white">{p.tag}</span>
-            <span class="absolute top-3 right-3 rounded-md bg-black/50 backdrop-blur px-2 py-0.5 font-mono text-[10px] text-white/80">{p.period}</span>
+            <span class="absolute top-3 left-3 rounded-md bg-black/60 backdrop-blur px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-white">{p.tag}</span>
+            <span class="absolute top-3 right-3 rounded-md bg-black/60 backdrop-blur px-2 py-0.5 font-mono text-[10px] text-white/80">{p.period}</span>
           </div>
           <div class="flex flex-1 flex-col p-5">
             <h3 class="font-display text-lg font-semibold text-apple-ink">{p.title}</h3>
@@ -40,12 +40,12 @@ const rest = projects.filter((p) => !p.featured);
     </div>
 
     {rest.length > 0 && (
-      <div class="mt-10">
+      <div class="mt-7">
         <p class="font-mono text-xs uppercase tracking-wider text-apple-ink-3 mb-4">More projects</p>
         <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {rest.map((p) => (
-            <article class="group flex items-start gap-3 rounded-xl border border-apple-border bg-white p-4 apple-card-shadow transition hover:-translate-y-0.5 hover:border-apple-border-mid">
-              <div class="size-12 shrink-0 overflow-hidden rounded-lg bg-[#e8e8ed]">
+            <article class="group flex items-start gap-3 rounded-xl border border-apple-border bg-surface p-4 apple-card-shadow transition hover:-translate-y-0.5 hover:border-apple-border-mid">
+              <div class="size-12 shrink-0 overflow-hidden rounded-lg bg-surface">
                 {p.image ? (
                   <img src={p.image} alt="" loading="lazy" decoding="async" class="h-full w-full object-cover" onerror="this.style.display='none'" />
                 ) : (
